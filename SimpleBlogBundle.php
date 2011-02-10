@@ -10,7 +10,7 @@
  * 
  */
 
-namespace Funsational\BlogBundle;
+namespace Funsational\SimpleBlogBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -22,6 +22,6 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
  * @author Michael Williams <michael.williams@funsational.com>
  *
  */
-class BlogBundle extends Bundle
+class SimpleBlogBundle extends Bundle
 {
 }

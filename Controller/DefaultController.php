@@ -10,7 +10,7 @@
  * 
  */
 
-namespace Funsational\BlogBundle\Controller;
+namespace Funsational\SimpleBlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -24,6 +24,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('BlogBundle:Default:index.twig.html');
+        return $this->render('SimpleBlogBundle:Default:index.twig.html');
     }
 }

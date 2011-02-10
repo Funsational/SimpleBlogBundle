@@ -5,6 +5,6 @@
     xsi:schemaLocation="http://www.symfony-project.org/schema/routing http://www.symfony-project.org/schema/routing/routing-1.0.xsd">
 
     <route id="blog_index" pattern="/">
-        <default key="_controller">BlogBundle:Default:index</default>
+        <default key="_controller">SimpleBlogBundle:Default:index</default>
     </route>
 </routes>
