@@ -13,17 +13,23 @@
 namespace Funsational\SimpleBlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Funsational\SimpleBlogBundle\Model\Post;
 
 /**
- * DefaultController
+ * PostController
  * 
  * @author Michael Williams <michael.williams@funsational.com>
  *
  */
-class DefaultController extends Controller
+class PostController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('SimpleBlogBundle:Default:index.twig.html');
+        return $this->render('SimpleBlogBundle:Default:post.twig.html');
+    }
+    
+    public function viewAction($slug)
+    {
+    	
     }
 }

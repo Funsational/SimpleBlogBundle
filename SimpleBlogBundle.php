@@ -24,4 +24,23 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
  */
 class SimpleBlogBundle extends Bundle
 {
+    public function boot()
+    {
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getNamespace()
+    {
+        return __NAMESPACE__;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPath()
+    {
+        return __DIR__;
+    }
 }
