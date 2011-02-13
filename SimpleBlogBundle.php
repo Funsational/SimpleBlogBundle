@@ -17,7 +17,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 /**
- * FunsationalBlogBundle
+ * SimpleBlogBundle
  * 
  * @author Michael Williams <michael.williams@funsational.com>
  *

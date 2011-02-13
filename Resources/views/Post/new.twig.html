@@ -1,0 +1,13 @@
+New Reply
+
+<div class="forum  post_new">
+    <div class="main">
+        <h2>New Reply</h2>
+        <form action="{{ path('blog_post_create') }}" {{ form_enctype(form) }} method="post">
+            {{ form_field(form) }}
+            <div>
+                <button type="submit" name="reply">Add post</button>
+            </div>
+        </form>
+    </div>
+</div>

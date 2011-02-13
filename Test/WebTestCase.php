@@ -17,8 +17,8 @@ class WebTestCase extends BaseWebTestCase
      */
     public function setUp()
     {
-        $om = $this->getService('funsational_blog.object_manager');
-        $this->postClass = $this->getService('funsational_blog.repository.post')->getObjectClass();
+        $om = $this->getService('simple_blog.object_manager');
+        $this->postClass = $this->getService('simple_blog.repository.post')->getObjectClass();
 
         return $om;
     }

@@ -23,13 +23,39 @@ use Funsational\SimpleBlogBundle\Model\Post;
  */
 class PostController extends Controller
 {
-    public function indexAction()
+    public function newAction()
     {
-        return $this->render('SimpleBlogBundle:Default:post.twig.html');
+    	$form = $this->get('simple_blog.form.post');
+
+        return $this->render('SimpleBlogBundle:Post:new.twig.html', array(
+            'form'  => $form
+        ));
     }
     
-    public function viewAction($slug)
+    public function createAction()
     {
-    	
+    	$post = $this->get('simple_blog.repository.post')->createNewPost();
+        $form = $this->get('simple_blog.form.post');
+        $form->bind($this->get('request'), $post);
+
+        if(!$form->isValid()) {
+        	return $this->render('SimpleBlogBundle:Post:new.twig.html', array(
+                'form'  => $form
+            ));
+        }
+
+        $post = $form->getData();
+
+//        $this->get('forum.creator.post')->create($post);
+//        $this->get('forum.blamer.post')->blame($post);
+
+        $objectManager = $this->get('simple_blog.object_manager');
+        $objectManager->persist($post);
+        $objectManager->flush();
+
+        $url = '/blog';
+        $response = $this->redirect($url);
+
+        return $response;
     }
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://www.symfony-project.org/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="simple_blog.form.post.class">Funsational\SimpleBlogBundle\Form\PostForm</parameter>
+        <parameter key="simple_blog.form.post.name">forum_post_form</parameter>
+    </parameters>
+
+    <services>
+        <service id="simple_blog.form.post" class="%simple_blog.form.post.class%">
+            <argument>%simple_blog.form.post.name%</argument>
+            <argument></argument>
+            <argument type="service" id="validator" />
+            <argument type="collection">
+                <argument key="theme">%simple_blog.template.theme%</argument>
+                <argument key="post_class">%simple_blog.model.post.class%</argument>
+            </argument>
+        </service>
+
+        <service id="simple_blog.form.post" factory-method="create" factory-class="%simple_blog.form.post.class%" class="%simple_blog.form.post.class%">
+            <argument type="service" id="form.context" />
+            <argument>%simple_blog.form.post.name%</argument>
+            <argument type="collection">
+                <argument key="theme">%simple_blog.template.theme%</argument>
+            </argument>
+        </service>
+    </services>
+
+</container>

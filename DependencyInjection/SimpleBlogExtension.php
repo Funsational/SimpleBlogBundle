@@ -20,9 +20,11 @@ class SimpleBlogExtension extends Extension
     {
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));       
         $loader->load('controller.xml');
+        $loader->load('templating.xml');
+        $loader->load('form.xml');
         
         if (!isset($config['db_driver'])) {
-            throw new \InvalidArgumentException('You must provide the funsational_blog.db_driver configuration');
+            throw new \InvalidArgumentException('You must provide the simple_blog.db_driver configuration');
         }
         
         try {
@@ -61,7 +63,7 @@ class SimpleBlogExtension extends Extension
      */
     public function getAlias()
     {
-        return 'funsational_blog';
+        return 'simple_blog';
     }
 
 }

@@ -5,18 +5,18 @@
     xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="simpleblog.template.renderer">twig</parameter>
-        <parameter key="simpleblog.controller.home.class">Funsational\SimpleBlogBundle\Controller\HomeController</parameter>
-        <parameter key="simpleblog.controller.post.class">Funsational\SimpleBlogBundle\Controller\PostController</parameter>
+        <parameter key="simple_blog.template.renderer">twig</parameter>
+        <parameter key="simple_blog.controller.home.class">Funsational\SimpleBlogBundle\Controller\HomeController</parameter>
+        <parameter key="simple_blog.controller.post.class">Funsational\SimpleBlogBundle\Controller\PostController</parameter>
     </parameters>
 
     <services>
-        <service id="simpleblog.controller.home" class="%simpleblog.controller.home.class%">
+        <service id="simple_blog.controller.home" class="%simple_blog.controller.home.class%">
             <call method="setContainer">
                 <argument type="service" id="service_container" />
             </call>
         </service>
-        <service id="simpleblog.controller.post" class="%simpleblog.controller.post.class%">
+        <service id="simple_blog.controller.post" class="%simple_blog.controller.post.class%">
             <call method="setContainer">
                 <argument type="service" id="service_container" />
             </call>

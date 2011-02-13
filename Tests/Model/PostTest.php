@@ -9,7 +9,7 @@ class PostTest extends WebTestCase
 {
     public function testObjectClass()
     {
-        $class = $this->getService('funsational_blog.repository.post')->getClassMetadata();
+        $class = $this->getService('simple_blog.repository.post')->getClassMetadata();
         $this->assertEquals($this->postClass, $class->name);
     }
     

@@ -9,11 +9,11 @@ abstract class Post
     protected $id;
     
     /**
-     * Topic the post belongs to
-     * @mongodb:String
-     * @var Topic
+     * @validation:NotBlank(message="Please enter a title")
+     *
+     * @var string
      */
-    protected $topic;
+    protected $title;
     
     /**
      * @validation:NotBlank(message="Please write a message")
@@ -22,13 +22,6 @@ abstract class Post
      * @var string
      */
     protected $message;
-    
-    /**
-     * Post number relative to its topic
-     *
-     * @var int
-     */
-    protected $number = null;
 
     protected $createdAt;
     protected $updatedAt;
@@ -37,13 +30,6 @@ abstract class Post
     {
         $this->setCreatedAt(new DateTime());
     }
-
-    /**
-     * Return the name of this post author
-     *
-     * @return string
-     **/
-    abstract public function getAuthorName();
 
     /**
      * Gets the id
@@ -55,6 +41,26 @@ abstract class Post
         return $this->id;
     }
 
+    /**
+     * Sets the title
+     * 
+     * @return string
+     */
+    public function setTitle($title)
+    {
+    	$this->title = $title;
+    }
+    
+    /**
+     * Gets the title
+     * 
+     * @return string
+     */
+    public function getTitle()
+    {
+    	return $this->title;
+    }
+    
     /**
      * Sets the message
      *
@@ -73,25 +79,6 @@ abstract class Post
     public function getMessage()
     {
         return $this->message;
-    }
-
-    /**
-     * Get number
-     * @return int
-     */
-    public function getNumber()
-    {
-        return $this->number;
-    }
-
-    /**
-     * Set number
-     * @param  int
-     * @return null
-     */
-    public function setNumber($number)
-    {
-        $this->number = $number;
     }
 
     /**
@@ -125,28 +112,14 @@ abstract class Post
     }
 
     /**
-     * Gets the topic
+     * Return the name of this post author
      *
-     * @return Topic
-     */
-    public function getTopic()
-    {
-        return $this->topic;
-    }
-
-    /**
-     * Sets the topic
-     *
-     * @return null
+     * @return string
      **/
-    public function setTopic($topic)
-    {
-        $this->topic = $topic;
-    }
-
+    abstract public function getAuthorName();
+    
     public function __toString()
     {
         return (string) $this->getId();
     }
-
 }
