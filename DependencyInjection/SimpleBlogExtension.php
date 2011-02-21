@@ -5,15 +5,16 @@ namespace Funsational\SimpleBlogBundle\DependencyInjection;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
-use Symfony\Component\DependencyInjection\Loader\FileLocator;
+
+use Symfony\Component\Config\FileLocator;
 
 class SimpleBlogExtension extends Extension
 {
-    public function configLoad(array $configs, ContainerBuilder $container)
+    public function load(array $config, ContainerBuilder $container)
     {
-        foreach ($configs as $config) {
-            $this->doConfigLoad($config, $container);
-        }
+        $config = call_user_func_array('array_merge_recursive', $config);
+        
+		$this->doConfigLoad($config, $container);
     }
 
     public function doConfigLoad(array $config, ContainerBuilder $container)
@@ -22,7 +23,7 @@ class SimpleBlogExtension extends Extension
         $loader->load('controller.xml');
         $loader->load('templating.xml');
         $loader->load('form.xml');
-        
+
         if (!isset($config['db_driver'])) {
             throw new \InvalidArgumentException('You must provide the simple_blog.db_driver configuration');
         }

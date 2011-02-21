@@ -15,6 +15,8 @@ namespace Funsational\SimpleBlogBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Funsational\SimpleBlogBundle\Document\Post;
 
+use Funsational\SimpleBlogBundle\Entity\User;
+
 /**
  * HomeController
  * 
@@ -24,7 +26,20 @@ use Funsational\SimpleBlogBundle\Document\Post;
 class HomeController extends Controller
 {
     public function indexAction()
-    {
+    {    	
+    	$user = new User();
+    	
+    	$em = $this->get('doctrine.orm.entity_manager');
+        $em->persist($user);
+        $em->flush();
+    	
+        $post = new Post();
+        
+        $dm = $this->get('doctrine.odm.mongodb.document_manager');
+        $dm->persist($post);
+        $dm->flush();
+        
+        
         return $this->render('SimpleBlogBundle:Default:index.twig.html');
     }
 }
